@@ -1,0 +1,30 @@
+<h1>Welcome to WeatherZ</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WeatherZ App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤 WeatherZ</h1>
+            <p>Check live weather conditions anywhere in the world</p>
+        </header>
+
+        <form method="POST" class="search-box">
+            <input type="text" name="city" placeholder="Enter city name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if weather %}
+        <div class="card">
+            <h2>{{ weather.city }}</h2>
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather icon">
+            <p class="temp">{{ weather.temperature }} °C</p>
+            <p class="desc">{{ weather.description }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
